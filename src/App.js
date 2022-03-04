@@ -1,5 +1,7 @@
 import './App.css';
 import {useEffect, useState} from 'react';
+import { Link } from "react-router-dom";
+
 
 function App() {
 
@@ -14,15 +16,9 @@ function App() {
 
   }
 
-  useEffect(()=>{
 
-    getNews();
-
-
-  },[])
 
   function getNews(){
-
       fetch(`https://newsapi.org/v2/everything?q=${searchdata}&apiKey=76d16bb43faa4c359068a68bde67fa43`)
       .then((response)=>response.json())
       .then((news)=>{
@@ -32,12 +28,12 @@ function App() {
       .catch((err)=>{
         console.log(err);
       })
-      
-
-
-
   }
 
+
+  useEffect(()=>{
+    getNews();
+  },[])  // eslint-disable-line react-hooks/exhaustive-deps
 
 
   return (
@@ -59,7 +55,7 @@ function App() {
 
               <div key={index} className="article">
 
-                <img className="news-img" src={article.urlToImage}/>
+                <img className="news-img" src={article.urlToImage} alt={article.author}/>
 
                 <div className="news-details">
 
@@ -68,10 +64,9 @@ function App() {
 
                     <h4 className="author">Published At : {article.publishedAt.split("T")[0]}</h4>
 
-                    <a href={article.url} target={"_blank"}>
+                    <a href={article.url} target="_blank" rel="noopener noreferrer">
                     <button className="btn">Read More</button>
-                    </a>
-                   
+                    </a>                   
 
                 </div>
 
