@@ -1,6 +1,5 @@
 import './App.css';
 import {useEffect, useState} from 'react';
-import { Link } from "react-router-dom";
 
 
 function App() {
@@ -19,14 +18,14 @@ function App() {
 
 
   function getNews(){
-      fetch(`https://newsapi.org/v2/everything?q=${searchdata}&apiKey=76d16bb43faa4c359068a68bde67fa43`)
+      return fetch(`https://newsapi.org/v2/everything?q=${searchdata}&apiKey=76d16bb43faa4c359068a68bde67fa43`)
       .then((response)=>response.json())
       .then((news)=>{
         console.log(news.articles)
-        setArticles(news.articles);
+       return setArticles(news.articles);
       })
       .catch((err)=>{
-        console.log(err);
+        return console.log(err);
       })
   }
 
