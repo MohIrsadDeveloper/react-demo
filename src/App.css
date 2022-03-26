@@ -65,3 +65,10 @@
     pointer-events: none;
   }
   
+.btn {
+  background-color: rgb(88, 170, 88);
+  border: none;
+  padding: 6px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+}
