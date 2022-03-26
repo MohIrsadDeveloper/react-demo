@@ -19,9 +19,9 @@ function App() {
 
   function getNews(){
       return fetch(`https://newsapi.org/v2/everything?q=${searchdata}&apiKey=76d16bb43faa4c359068a68bde67fa43`)
-      .then((response)=>response.json())
+      .then((response)=> response.json())
       .then((news)=>{
-        console.log(news.articles)
+        // console.log(news.articles)
        return setArticles(news.articles);
       })
       .catch((err)=>{
